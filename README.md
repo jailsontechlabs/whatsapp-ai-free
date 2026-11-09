@@ -1,4 +1,4 @@
-# AIDEALT WhatsApp AI — implantação pelo painel Cloudflare
+# JailsonTech WhatsApp AI — implantação pelo painel Cloudflare
 
 ## O que esta versão entrega
 - Recebe `messages.upsert` da Evolution API.
@@ -30,8 +30,8 @@ Binding:
 Runtime variables / secrets:
 - Secret `NVIDIA_API_KEY` (já criado)
 - Secret `EVOLUTION_APIKEY` (já criado)
-- Variable `EVOLUTION_URL` = `https://evolution-api-v2-3-7-58as.onrender.com`
-- Variable `EVOLUTION_INSTANCIA` = `TESTEAULA`
+- Variable `EVOLUTION_URL` = `https://minha-url-evolution.com`
+- Variable `EVOLUTION_INSTANCIA` = `minha_instancia_evolution`
 
 Não acrescente `/manager` à URL. Não cole chaves em código.
 
@@ -41,7 +41,7 @@ Não acrescente `/manager` à URL. Não cole chaves em código.
 3. Substitua TODO o conteúdo pelo arquivo `worker.js` deste pacote.
 4. Clique em Save and deploy / Deploy.
 5. Abra:
-   `https://atendente-whatsapp-ai.jailsoncnt06.workers.dev/health`
+   `https://meu_link_worker_cloudflare.workers.dev/health`
 6. Confirme que a resposta JSON mostra `databaseBound`, `nvidiaSecretSet`, `evolutionSecretSet`, `evolutionUrlSet` e `instanceSet` como `true`.
 
 Se aparecer `false`, corrija a variável/secret ou binding antes de configurar o webhook.
@@ -50,9 +50,9 @@ Se aparecer `false`, corrija a variável/secret ou binding antes de configurar o
 O teste real será feito pelo primeiro WhatsApp de teste. Se a NVIDIA retornar erro, abra Worker > Observability > Logs e procure `AI_ERROR`. Nunca copie a chave para o chat ou para o código.
 
 ## 5. Configurar webhook Evolution
-Na instância `TESTEAULA`, configure:
+Na instância `minha_instancia_evolution`, configure:
 - Webhook: Enabled
-- URL: `https://atendente-whatsapp-ai.jailsoncnt06.workers.dev/webhook/evolution`
+- URL: `https://meu_link_worker_cloudflare.workers.dev/webhook/evolution`
 - Evento: `MESSAGES_UPSERT` (ou `messages.upsert`, conforme o seletor do Manager)
 - Webhook by Events: desativado, se a tela oferecer essa opção
 - Base64: `false` nesta versão
